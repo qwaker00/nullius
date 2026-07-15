@@ -263,8 +263,8 @@ function miner_effect(event, ore, size, richness, goal_ind, goal_amount)
   local entities = s.find_entities(a)
   for _, e in pairs(entities) do
     if (e.valid and (e.type == "mining-drill")) then
-    e.active = false
-      e.active = true
+    e.disabled_by_script = true
+      e.disabled_by_script = false
       e.update_connections()
   end
   end
