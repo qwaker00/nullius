@@ -1,6 +1,13 @@
 local ICONPATH = "__nullius__/graphics/icons/"
 local ENTITYPATH = "__nullius__/graphics/entity/"
 
+local function recipe_has_category(recipe, c)
+  for _, x in pairs(recipe.categories or {}) do
+    if (x == c) then return true end
+  end
+  return false
+end
+
 building_types_list = {
   "furnace",
   "transport-belt",
@@ -126,7 +133,7 @@ for _, recipe in pairs(data.raw.recipe) do
       ((recipe.order == nil) or (string.sub(recipe.order, 1, 8) ~= "nullius-")) and
       (string.sub(recipe.name, 1, 13) ~= "fill-nullius-") and
       (string.sub(recipe.name, 1, 14) ~= "empty-nullius-") and
-	  (recipe.category ~= "ee-testing-tool") and
+	  (not recipe_has_category(recipe, "ee-testing-tool")) and
 	  (string.sub(recipe.name, 1, 5) ~= "bpsb-")) then
     recipe.hidden = true
     recipe.enabled = false
@@ -164,19 +171,28 @@ for _,fluid in pairs(data.raw.fluid) do
   end
 end
 
+local function find_item(name)
+  if (name == nil) then return nil end
+  for _,itype in pairs(item_types_list) do
+    local t = data.raw[itype]
+    if (t ~= nil) and (t[name] ~= nil) then return t[name] end
+  end
+  return nil
+end
+
 for _,type in pairs(building_types_list) do
   for _,entity in pairs(data.raw[type]) do
     if entity.next_upgrade ~= nil then
       local next_entity = data.raw[type][entity.next_upgrade]
       if (next_entity ~= nil) and next_entity.minable ~= nil then
-        local item = data.raw.item[next_entity.minable.result]
+        local item = find_item(next_entity.minable.result)
         if (item ~= nil) and item.hidden then
           entity.next_upgrade = nil
         end
       end
     end
     if entity.minable ~= nil then
-      local item = data.raw.item[entity.minable.result]
+      local item = find_item(entity.minable.result)
       if (item ~= nil) and item.hidden then
         entity.next_upgrade = nil
         entity.hidden = true
@@ -226,7 +242,7 @@ for _, recipe in pairs(data.raw.recipe) do
 	  recipe.GCKI_ignore = true
 	elseif (((recipe.order == nil) or
 	    (string.sub(recipe.order, 1, 8) ~= "nullius-")) and
-        (recipe.category ~= "ee-testing-tool") and
+        (not recipe_has_category(recipe, "ee-testing-tool")) and
 	    (string.sub(recipe.name, 1, 5) ~= "bpsb-")) then
       recipe.enabled = false
 	  recipe.allow_as_intermediate = false

@@ -320,7 +320,7 @@ for _,fluid in pairs(data.raw.fluid) do
     data.raw.recipe[fill_name].hide_from_player_crafting = true
     data.raw.recipe[fill_name].hide_from_stats = true
     data.raw.recipe[fill_name].enabled = true
-    data.raw.recipe[fill_name].category = "nullius-barrel"
+    data.raw.recipe[fill_name].categories = { "nullius-barrel" }
     data.raw.recipe[fill_name].energy_required = 0.25
 	data.raw.recipe[fill_name].requester_paste_multiplier = 5
     data.raw.recipe[empty_name].subgroup = "empty-" .. subgroup
@@ -328,7 +328,7 @@ for _,fluid in pairs(data.raw.fluid) do
     data.raw.recipe[empty_name].hide_from_player_crafting = true
     data.raw.recipe[empty_name].hide_from_stats = true
     data.raw.recipe[empty_name].enabled = true
-    data.raw.recipe[empty_name].category = "nullius-unbarrel"
+    data.raw.recipe[empty_name].categories = { "nullius-unbarrel" }
     data.raw.recipe[empty_name].energy_required = 0.25
 	data.raw.recipe[empty_name].requester_paste_multiplier = 5
 

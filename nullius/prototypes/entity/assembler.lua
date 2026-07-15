@@ -6,6 +6,33 @@ local ENTITYPATH = "__nullius__/graphics/entity/"
 
 local BASEENTITY = "__base__/graphics/entity/"
 
+local assembler_pictures = require("__base__/prototypes/entity/assembler-pictures")
+
+-- Recursively multiply every sprite scale/shift in a graphics table by a factor.
+local function nullius_scale_gfx(node, f)
+  if (type(node) ~= "table") then return end
+  for k, v in pairs(node) do
+    if ((k == "scale") and (type(v) == "number")) then
+      node[k] = v * f
+    elseif ((k == "shift") and (type(v) == "table")) then
+      if (v[1] ~= nil) then v[1] = v[1] * f end
+      if (v[2] ~= nil) then v[2] = v[2] * f end
+      if (v.x ~= nil) then v.x = v.x * f end
+      if (v.y ~= nil) then v.y = v.y * f end
+    elseif (type(v) == "table") then
+      nullius_scale_gfx(v, f)
+    end
+  end
+end
+
+-- Return a copy of the base game's assembling-machine graphics_set, rescaled from
+-- the base 3x3 size (collision half-width 1.2) to the given Nullius half-width.
+local function assembler_gfx(tier, half_width)
+  local gs = util.table.deepcopy(assembler_pictures["assembler"..tier.."_graphics_set"])
+  nullius_scale_gfx(gs, half_width / 1.2)
+  return gs
+end
+
 data:extend({
   {
     type = "assembling-machine",
@@ -35,34 +62,7 @@ data:extend({
     fast_replaceable_group = "small-assembler",
     next_upgrade = "nullius-small-assembler-2",
     alert_icon_shift = util.by_pixel(-3, -12),
-    graphics_set = {
-      animation = {
-        layers = {
-          {
-            filename = BASEENTITY .. "assembling-machine-1/assembling-machine-1.png",
-            priority="high",
-            width = 214,
-            height = 226,
-            frame_count = 32,
-            line_length = 8,
-            shift = util.by_pixel(0, 2),
-            scale = 0.666*0.5
-          },
-          {
-            filename = BASEENTITY .. "assembling-machine-1/assembling-machine-1-shadow.png",
-            priority="high",
-            width = 190,
-            height = 165,
-            frame_count = 1,
-            line_length = 1,
-            repeat_count = 32,
-            draw_as_shadow = true,
-            shift = util.by_pixel(8.5, 5),
-            scale = 0.666*0.5
-          }
-        }
-      }
-    },
+    graphics_set = assembler_gfx(1, 0.7),
     crafting_categories = {
       "tiny-crafting", "small-crafting", "medium-crafting",
       "tiny-assembly", "small-assembly", "medium-assembly",
@@ -108,7 +108,7 @@ data:extend({
     fluid_boxes = {
       {
         production_type = "input",
-        pipe_picture = assembler2pipepictures(),
+        pipe_picture = assembler_pictures.assembler2pipepictures,
         pipe_covers = pipecoverspictures(),
         volume = 500,
         pipe_connections = {{ flow_direction ="input", position = {0, -1}, direction = defines.direction.north }},
@@ -116,7 +116,7 @@ data:extend({
       },
       {
         production_type = "input",
-        pipe_picture = assembler2pipepictures(),
+        pipe_picture = assembler_pictures.assembler2pipepictures,
         pipe_covers = pipecoverspictures(),
         volume = 500,
         pipe_connections = {{ flow_direction ="input", position = {0, 1}, direction = defines.direction.south }},
@@ -127,35 +127,7 @@ data:extend({
     fast_replaceable_group = "medium-assembler",
     next_upgrade = "nullius-medium-assembler-2",
     alert_icon_shift = util.by_pixel(-3, -12),
-    graphics_set = {
-      animation = {
-        layers = {
-          {
-              filename = BASEENTITY .. "assembling-machine-1/assembling-machine-1.png",
-              priority="high",
-              width = 214,
-              height = 226,
-              frame_count = 32,
-              line_length = 8,
-              shift = util.by_pixel(0, 2),
-              scale = 0.5,
-              animation_speed = 0.5
-          },
-          {
-              filename = BASEENTITY .. "assembling-machine-1/assembling-machine-1-shadow.png",
-              priority="high",
-              width = 190,
-              height = 165,
-              frame_count = 1,
-              line_length = 1,
-              repeat_count = 32,
-              draw_as_shadow = true,
-              shift = util.by_pixel(8.5, 5),
-              scale = 0.5
-          }
-        }
-      }
-    },
+    graphics_set = assembler_gfx(1, 1.2),
     crafting_categories = {
       "small-crafting", "medium-crafting", "large-crafting",
       "small-assembly", "medium-assembly", "large-assembly", "medium-only-assembly",
@@ -201,7 +173,7 @@ data:extend({
     fluid_boxes = {
       {
         production_type = "input",
-        pipe_picture = assembler2pipepictures(),
+        pipe_picture = assembler_pictures.assembler2pipepictures,
         pipe_covers = pipecoverspictures(),
         volume = 500,
         pipe_connections = {{ flow_direction ="input", position = {0.5, -1.5}, direction = defines.direction.north }},
@@ -209,7 +181,7 @@ data:extend({
       },
       {
         production_type = "input",
-        pipe_picture = assembler2pipepictures(),
+        pipe_picture = assembler_pictures.assembler2pipepictures,
         pipe_covers = pipecoverspictures(),
         volume = 500,
         pipe_connections = {{ flow_direction ="input", position = {-0.5, 1.5}, direction = defines.direction.south }},
@@ -220,35 +192,7 @@ data:extend({
     fast_replaceable_group = "large-assembler",
     next_upgrade = "nullius-large-assembler-2",
     alert_icon_shift = util.by_pixel(-3, -12),
-    graphics_set = {
-      animation = {
-        layers = {
-          {
-            filename = BASEENTITY .. "assembling-machine-2/assembling-machine-2.png",
-            priority = "high",
-            width = 214,
-            height = 218,
-            frame_count = 32,
-            line_length = 8,
-            shift = util.by_pixel(0, 4),
-            scale = 0.666,
-            animation_speed = 0.2
-          },
-          {
-            filename = BASEENTITY .. "assembling-machine-2/assembling-machine-2-shadow.png",
-            priority = "high",
-            width = 196,
-            height = 163,
-            frame_count = 32,
-            line_length = 8,
-            draw_as_shadow = true,
-            shift = util.by_pixel(12, 4.75),
-            scale = 0.666,
-            animation_speed = 0.2
-          }
-        }
-      }
-    },
+    graphics_set = assembler_gfx(2, 1.7),
     crafting_categories = {
       "medium-crafting", "large-crafting", "huge-crafting",
       "medium-assembly", "large-assembly", "huge-assembly",
@@ -304,24 +248,7 @@ data:extend({
     fast_replaceable_group = "small-assembler",
     next_upgrade = "nullius-small-assembler-3",
     alert_icon_shift = util.by_pixel(-3, -12),
-    graphics_set = {
-      animation = {
-        layers = {
-          {
-            filename = BASEENTITY .. "assembling-machine-2/assembling-machine-2.png",
-            priority = "high",
-            width = 214,
-            height = 218,
-            frame_count = 32,
-            line_length = 8,
-            shift = util.by_pixel(0, 4),
-            scale = 0.666*0.5,
-            animation_speed = 0.8
-          },
-          data.raw["assembling-machine"]["nullius-small-assembler-1"].graphics_set.animation.layers[2]
-        }
-      }
-    },
+    graphics_set = assembler_gfx(2, 0.7),
     crafting_categories = {
       "tiny-crafting", "small-crafting", "medium-crafting",
       "tiny-assembly", "small-assembly", "medium-assembly",
@@ -367,35 +294,7 @@ data:extend({
     selection_box = {{-1.0, -1.0}, {1.0, 1.0}},
     fast_replaceable_group = "small-assembler",
     alert_icon_shift = util.by_pixel(-3, -12),
-    graphics_set = {
-      animation = {
-        layers = {
-          {
-            filename = BASEENTITY .. "assembling-machine-3/assembling-machine-3.png",
-            priority = "high",
-            width = 214,
-            height = 237,
-            frame_count = 32,
-            line_length = 8,
-            shift = util.by_pixel(0, -0.3333), 
-            scale = 0.666*0.5,
-            animation_speed = 0.6
-          },
-          {
-            filename = BASEENTITY .. "assembling-machine-3/assembling-machine-3-shadow.png",
-            priority = "high",
-            width = 260,
-            height = 162,
-            frame_count = 32,
-            line_length = 8,
-            draw_as_shadow = true,
-            shift = util.by_pixel(18.667, 2.6667),
-            scale = 0.666*0.5,
-            animation_speed = 0.6
-          }
-        }
-      }
-    },
+    graphics_set = assembler_gfx(3, 0.7),
     crafting_categories = {
       "tiny-crafting", "small-crafting", "medium-crafting",
       "tiny-assembly", "small-assembly", "medium-assembly",
@@ -437,35 +336,7 @@ data:extend({
     fast_replaceable_group = "medium-assembler",
     next_upgrade = "nullius-medium-assembler-3",
     alert_icon_shift = util.by_pixel(-3, -12),
-    graphics_set = {
-      animation = {
-        layers = {
-          {
-              filename = BASEENTITY .. "assembling-machine-2/assembling-machine-2.png",
-              priority = "high",
-              width = 214,
-              height = 218,
-              frame_count = 32,
-              line_length = 8,
-              shift = util.by_pixel(0, 4),
-              scale = 0.5,
-              animation_speed = 0.4
-          },
-          {
-              filename = BASEENTITY .. "assembling-machine-2/assembling-machine-2-shadow.png",
-              priority = "high",
-              width = 196,
-              height = 163,
-              frame_count = 32,
-              line_length = 8,
-              draw_as_shadow = true,
-              shift = util.by_pixel(12, 4.75),
-              scale = 0.5,
-              animation_speed = 0.4
-          }
-        }
-      }
-    },
+    graphics_set = assembler_gfx(2, 1.2),
     crafting_categories = {
       "small-crafting", "medium-crafting", "large-crafting",
       "small-assembly", "medium-assembly", "large-assembly", "medium-only-assembly",
@@ -506,35 +377,7 @@ data:extend({
     fluid_boxes_off_when_no_fluid_recipe = true,
     fast_replaceable_group = "medium-assembler",
     alert_icon_shift = util.by_pixel(-3, -12),
-    graphics_set = {
-      animation = {
-        layers = {
-          {
-              filename = BASEENTITY .. "assembling-machine-3/assembling-machine-3.png",
-              priority = "high",
-              width = 214,
-              height = 237,
-              frame_count = 32,
-              line_length = 8,
-              shift = util.by_pixel(0, -0.75),
-              scale = 0.5,
-              animation_speed = 0.3
-          },
-          {
-              filename = BASEENTITY .. "assembling-machine-3/assembling-machine-3-shadow.png",
-              priority = "high",
-              width = 260,
-              height = 162,
-              frame_count = 32,
-              line_length = 8,
-              draw_as_shadow = true,
-              shift = util.by_pixel(28, 4),
-              scale = 0.5,
-              animation_speed = 0.3
-          }
-        }
-      }
-    },
+    graphics_set = assembler_gfx(3, 1.2),
     crafting_categories = {
       "small-crafting","medium-crafting", "large-crafting",
       "small-assembly", "medium-assembly", "large-assembly", "medium-only-assembly",
@@ -574,35 +417,7 @@ data:extend({
     fluid_boxes_off_when_no_fluid_recipe = true,
     fast_replaceable_group = "large-assembler",
     alert_icon_shift = util.by_pixel(-3, -12),
-    graphics_set = {
-      animation = {
-        layers = {
-          {
-            filename = BASEENTITY .. "assembling-machine-3/assembling-machine-3.png",
-            priority = "high",
-            width = 214,
-            height = 237,
-            frame_count = 32,
-            line_length = 8,
-            shift = util.by_pixel(0, -1),
-            scale = 0.666,
-            animation_speed = 0.15
-          },
-          {
-            filename = BASEENTITY .. "assembling-machine-3/assembling-machine-3-shadow.png",
-            priority = "high",
-            width = 260,
-            height = 162,
-            frame_count = 32,
-            line_length = 8,
-            draw_as_shadow = true,
-            shift = util.by_pixel(37.333, 5.3333),
-            scale = 0.666,
-            animation_speed = 0.15
-          }
-        }
-      }
-    },
+    graphics_set = assembler_gfx(3, 1.7),
     crafting_categories = {
       "medium-crafting", "large-crafting", "huge-crafting",
       "medium-assembly", "large-assembly", "huge-assembly",

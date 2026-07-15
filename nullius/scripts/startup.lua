@@ -128,7 +128,7 @@ local function init_tech(force)
     elseif ((string.sub(recipe.order, 1, 8) ~= "nullius-") and
         (string.sub(recipe.name, 1, 13) ~= "fill-nullius-") and
         (string.sub(recipe.name, 1, 14) ~= "empty-nullius-") and
-		(recipe.category ~= "ee-testing-tool") and
+		(not recipe.has_category("ee-testing-tool")) and
 	    (string.sub(recipe.name, 1, 5) ~= "bpsb-")) then
       recipe.enabled = false
     end

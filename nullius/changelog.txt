@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.0
+Date: 15.07.2026
+  Features:
+    - Locomotives, cargo wagons, fluid wagons, and drone carriers can now be upgraded to their higher tiers with the upgrade planner.
+  Changes:
+    - Updated for Factorio 2.1: recipes, vehicles, chests, the rocket silo, rock loot, and research triggers now use the new 2.1 prototype format.
+    - Marked the Recycler mod as incompatible, as its automatically generated recycling recipes are not compatible with Nullius's overhauled recipes.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.10
 Date: xx.xx.2026
   Features:

@@ -116,13 +116,14 @@ data:extend({
     logistic_mode = "storage",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
 
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = ENTITYPATH .. "logistic-entity/logistic-entity.png",
@@ -170,7 +171,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
   {
     type = "logistic-container",
     name = "nullius-large-storage-chest-1",
@@ -194,13 +196,14 @@ data:extend({
     logistic_mode = "storage",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
 
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = ENTITYPATH .. "logistic-entity/logistic-entity.png",
@@ -250,7 +253,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
   {
     type = "logistic-container",
     name = "nullius-large-storage-chest-2",
@@ -273,12 +277,13 @@ data:extend({
     logistic_mode = "storage",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = BASEENTITY .. "logistic-chest/storage-chest.png",
@@ -301,7 +306,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
 
   {
     type = "logistic-container",
@@ -326,13 +332,14 @@ data:extend({
     logistic_mode = "passive-provider",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
 
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = ENTITYPATH .. "logistic-entity/logistic-entity.png",
@@ -380,7 +387,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
   {
     type = "logistic-container",
     name = "nullius-large-supply-chest-1",
@@ -403,13 +411,14 @@ data:extend({
     logistic_mode = "passive-provider",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
 
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = ENTITYPATH .. "logistic-entity/logistic-entity.png",
@@ -459,7 +468,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
   {
     type = "logistic-container",
     name = "nullius-large-supply-chest-2",
@@ -481,12 +491,13 @@ data:extend({
     logistic_mode = "passive-provider",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = BASEENTITY .. "logistic-chest/passive-provider-chest.png",
@@ -509,7 +520,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
 
   {
     type = "logistic-container",
@@ -537,13 +549,14 @@ data:extend({
     logistic_mode = "requester",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
 
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = ENTITYPATH .. "logistic-entity/logistic-entity.png",
@@ -591,7 +604,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
   {
     type = "logistic-container",
     name = "nullius-large-demand-chest-1",
@@ -617,13 +631,14 @@ data:extend({
     logistic_mode = "requester",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
 
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = ENTITYPATH .. "logistic-entity/logistic-entity.png",
@@ -673,7 +688,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
   {
     type = "logistic-container",
     name = "nullius-large-demand-chest-2",
@@ -698,12 +714,13 @@ data:extend({
     logistic_mode = "requester",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = BASEENTITY .. "logistic-chest/requester-chest.png",
@@ -726,7 +743,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
 
   {
     type = "logistic-container",
@@ -754,13 +772,14 @@ data:extend({
     logistic_mode = "buffer",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
 
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = ENTITYPATH .. "logistic-entity/logistic-entity.png",
@@ -808,7 +827,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
   {
     type = "logistic-container",
     name = "nullius-large-buffer-chest-1",
@@ -834,13 +854,14 @@ data:extend({
     logistic_mode = "buffer",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
 
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = ENTITYPATH .. "logistic-entity/logistic-entity.png",
@@ -890,7 +911,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
   {
     type = "logistic-container",
     name = "nullius-large-buffer-chest-2",
@@ -915,12 +937,13 @@ data:extend({
     logistic_mode = "buffer",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = BASEENTITY .. "logistic-chest/buffer-chest.png",
@@ -943,7 +966,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
 
   {
     type = "logistic-container",
@@ -968,13 +992,14 @@ data:extend({
     logistic_mode = "active-provider",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
 
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = ENTITYPATH .. "logistic-entity/logistic-entity.png",
@@ -1022,7 +1047,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
   {
     type = "logistic-container",
     name = "nullius-large-dispatch-chest-1",
@@ -1045,13 +1071,14 @@ data:extend({
     logistic_mode = "active-provider",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
 
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = ENTITYPATH .. "logistic-entity/logistic-entity.png",
@@ -1101,7 +1128,8 @@ data:extend({
         }
       }
     }
-  },
+    }
+},
   {
     type = "logistic-container",
     name = "nullius-large-dispatch-chest-2",
@@ -1123,12 +1151,13 @@ data:extend({
     logistic_mode = "active-provider",
     open_sound = data.raw["logistic-container"]["storage-chest"].open_sound,
     close_sound = data.raw["logistic-container"]["storage-chest"].close_sound,
-    animation_sound = data.raw["logistic-container"]["storage-chest"].animation_sound,
     impact_category = data.raw["logistic-container"]["storage-chest"].impact_category,
-    opened_duration = data.raw["logistic-container"]["storage-chest"].opened_duration,
     circuit_connector = circuit_connector_definitions["chest"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
-    animation = {
+    robot_door = {
+      animation_sound = data.raw["logistic-container"]["storage-chest"].robot_door.animation_sound,
+      opened_duration = data.raw["logistic-container"]["storage-chest"].robot_door.opened_duration,
+      animation = {
       layers = {
         {
           filename = BASEENTITY .. "logistic-chest/active-provider-chest.png",
@@ -1151,5 +1180,6 @@ data:extend({
         }
       }
     }
-  }
+    }
+}
 })

@@ -2,6 +2,19 @@ local ICONPATH = "__nullius__/graphics/icons/"
 local ENTITYPATH = "__nullius__/graphics/entity/"
 local BASEENTITY = "__base__/graphics/entity/"
 
+-- Base's oil-refinery graphics were split into per-direction files in 2.0; reuse
+-- the base directional animation and tint its (non-shadow) body layers.
+local refinery_gfx = require("__base__/prototypes/entity/oil-refinery-animation")
+local function tinted_refinery_animation(tint)
+  local anim = util.table.deepcopy(refinery_gfx.animation)
+  for _, dir in pairs({"north", "east", "south", "west"}) do
+    for _, layer in pairs(anim[dir].layers) do
+      if (not layer.draw_as_shadow) then layer.tint = tint end
+    end
+  end
+  return anim
+end
+
 
 local function hydro_animation(newtint)
   local baselayer = scale_image(
@@ -1031,29 +1044,7 @@ data:extend({
         },
       },
   
-      animation = make_4way_animation_from_spritesheet({
-        layers = {
-          {
-              filename = BASEENTITY .. "oil-refinery/oil-refinery.png",
-              width = 386,
-              height = 430,
-              frame_count = 1,
-              shift = util.by_pixel(0, -7.5),
-              scale = 0.5,
-              tint = {0.77, 0.77, 0.66, 1}
-          },
-          {
-              filename = BASEENTITY .. "oil-refinery/oil-refinery-shadow.png",
-              width = 674,
-              height = 426,
-              frame_count = 1,
-              shift = util.by_pixel(82.5, 26.5),
-              draw_as_shadow = true,
-              force_hr_shadow = true,
-              scale = 0.5
-          }
-        }
-      })
+      animation = tinted_refinery_animation({0.77, 0.77, 0.66, 1})
     }
   }
 })
@@ -1130,29 +1121,7 @@ data:extend({
     },
 
     graphics_set = {
-      animation = make_4way_animation_from_spritesheet({
-        layers = {
-          {
-              filename = BASEENTITY .. "oil-refinery/oil-refinery.png",
-              width = 386,
-              height = 430,
-              frame_count = 1,
-              shift = util.by_pixel(0, -7.5),
-              scale = 0.5,
-              tint = {0.8, 0.8, 1, 1}
-          },
-          {
-              filename = BASEENTITY .. "oil-refinery/oil-refinery-shadow.png",
-              width = 674,
-              height = 426,
-              frame_count = 1,
-              shift = util.by_pixel(82.5, 26.5),
-              draw_as_shadow = true,
-              force_hr_shadow = true,
-              scale = 0.5
-          }
-        }
-      }),
+      animation = tinted_refinery_animation({0.8, 0.8, 1, 1}),
       working_visualisations = data.raw["assembling-machine"]["nullius-distillery-1"].graphics_set.working_visualisations,
     }
   },

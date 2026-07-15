@@ -16,6 +16,7 @@ data:extend({
   {
     type = "locomotive",
     name = "nullius-locomotive-1",
+    next_upgrade = "nullius-locomotive-2",
     icons = data.raw["item-with-entity-data"]["nullius-locomotive-1"].icons,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 0.6, result = "nullius-locomotive-1"},
@@ -133,6 +134,7 @@ data:extend({
   {
     type = "locomotive",
     name = "nullius-locomotive-2",
+    next_upgrade = "nullius-locomotive-3",
     icons = data.raw["item-with-entity-data"]["nullius-locomotive-2"].icons,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 0.8, result = "nullius-locomotive-2"},
@@ -381,6 +383,7 @@ data:extend({
   {
     type = "cargo-wagon",
     name = "nullius-cargo-wagon-1",
+    next_upgrade = "nullius-cargo-wagon-2",
     icons = data.raw["item-with-entity-data"]["nullius-cargo-wagon-1"].icons,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     inventory_size = 25,
@@ -432,6 +435,7 @@ data:extend({
   {
     type = "cargo-wagon",
     name = "nullius-cargo-wagon-2",
+    next_upgrade = "nullius-cargo-wagon-3",
     icons = data.raw["item-with-entity-data"]["nullius-cargo-wagon-2"].icons,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     inventory_size = 50,
@@ -534,6 +538,7 @@ data:extend({
   {
     type = "fluid-wagon",
     name = "nullius-fluid-wagon-1",
+    next_upgrade = "nullius-fluid-wagon-2",
     icons = data.raw["item-with-entity-data"]["nullius-fluid-wagon-1"].icons,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 0.6, result = "nullius-fluid-wagon-1"},
@@ -619,6 +624,7 @@ data:extend({
   {
     type = "fluid-wagon",
     name = "nullius-fluid-wagon-2",
+    next_upgrade = "nullius-fluid-wagon-3",
     icons = data.raw["item-with-entity-data"]["nullius-fluid-wagon-2"].icons,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 0.8, result = "nullius-fluid-wagon-2"},
@@ -713,6 +719,8 @@ data:extend({
   {
     type = "artillery-wagon",
     name = "nullius-drone-carrier-1",
+    next_upgrade = "nullius-drone-carrier-2",
+    fast_replaceable_group = "nullius-drone-carrier",
     icons = data.raw["item-with-entity-data"]["nullius-drone-carrier-1"].icons,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     inventory_size = 3,
@@ -815,6 +823,7 @@ data:extend({
   {
     type = "artillery-wagon",
     name = "nullius-drone-carrier-2",
+    fast_replaceable_group = "nullius-drone-carrier",
     icons = data.raw["item-with-entity-data"]["nullius-drone-carrier-2"].icons,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     inventory_size = 5,

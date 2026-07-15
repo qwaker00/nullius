@@ -95,11 +95,11 @@ for _,rock in pairs(data.raw["simple-entity"]) do
         end
         rock.loot = {}
         for _,minres in pairs(rock.minable.results) do
-          table.insert(rock.loot, {item=minres.name, count_min=minres.amount_min*0.5,
-          count_max=(minres.amount_max*0.8)+0.2})
+          table.insert(rock.loot, {type="item", name=minres.name, amount_min=math.floor(minres.amount_min*0.5),
+          amount_max=math.floor((minres.amount_max*0.8)+0.2)})
         end
         if (total > 4) then
-          table.insert(rock.loot, {item=tertiary, count_min=0, count_max=(total / 5)})
+          table.insert(rock.loot, {type="item", name=tertiary, amount_min=0, amount_max=math.floor(total / 5)})
         end
       elseif (rock.minable.result ~= nil) then
         rock.minable.count = rock.minable.count * 0.25
@@ -108,10 +108,10 @@ for _,rock in pairs(data.raw["simple-entity"]) do
         elseif rock.minable.result == "coal" then
           rock.minable.result = secondary
         end
-        rock.loot = {{item=rock.minable.result, count_min=rock.minable.count*0.6,
-          count_max=(rock.minable.count*0.8)+0.2}}
+        rock.loot = {{type="item", name=rock.minable.result, amount_min=math.floor(rock.minable.count*0.6),
+          amount_max=math.floor((rock.minable.count*0.8)+0.2)}}
         if (rock.minable.count > 2) then
-          table.insert(rock.loot, {item=tertiary, count_min=0, count_max=(rock.minable.count/2.5)})
+          table.insert(rock.loot, {type="item", name=tertiary, amount_min=0, amount_max=math.floor(rock.minable.count/2.5)})
         end
       else
         rock.loot = nil
@@ -125,6 +125,6 @@ end
 -- From Alien Biomes
 if (data.raw["simple-entity"]["sand-big-rock-white"] ~= nil) then
   table.insert(data.raw["simple-entity"]["sand-big-rock-white"].minable.results,
-    {type="item", name="nullius-soda-ash", probability=0.1, amount_min=1, amount_max=2}
+    {type="item", name="nullius-soda-ash", independent_probability=0.1, amount_min=1, amount_max=2}
   )
 end
